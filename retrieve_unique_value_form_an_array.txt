@@ -1,0 +1,19 @@
+$data = '[
+   {"member_name":"member1","no_of_users":20},
+    {"member_name":"member1","no_of_users":20},
+    {"member_name":"member1","no_of_users":20},
+    {"member_name":"member2","no_of_users":10},
+   {"member_name":"member2","no_of_users":10},
+   {"member_name":"member3","no_of_users":30}
+]';
+
+// Make a PHP array from the JSON string.
+$array = json_decode( $data, TRUE );
+
+// Only keep unique values, by using array_unique with SORT_REGULAR as flag.
+// We're using array_values here, to only retrieve the values and not the keys.
+// This way json_encode will give us a nicely formatted JSON string later on.
+$array = array_values( array_unique( $array, SORT_REGULAR ) );
+
+// Make a JSON string from the array.
+$result = json_encode( $array );
